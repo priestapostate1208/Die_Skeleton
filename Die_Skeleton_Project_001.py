@@ -4,7 +4,7 @@ sz=100
 flip = 180
 right_ang = 90
 origin_x= -0
-origin_y= 60
+origin_y= 200
 x=origin_x #this is to start off with testing, without altering the origin_x/y values
 y=origin_y #this is to start off with testing, without altering the origin_x/y values
 checkerboard_x=0 #this is for the checkerboard function. 
@@ -72,14 +72,14 @@ def checkerboard(t,sz,n):
     square_x=t.xcor()
     square_y=t.ycor()
     #print(t.xcor(),t.ycor())
-    print(t.pos())
+#    print(t.pos())
     x,y = t.pos()
     checkerboard_x,checkerboard_y = t.pos()
-    print(x,y)
-    print(checkerboard_x,checkerboard_y)
+#     print(x,y)
+#     print(checkerboard_x,checkerboard_y)
     for i in range(1,n+1):
         for j in range(1,n+1):
-            print (i,j,type(i),type(j))#- this is shown to work.
+            #print (i,j,type(i),type(j))#- this is shown to work.
             if (i+j)%2==0:
                 t.fillcolor("yellow")
                 
@@ -93,26 +93,14 @@ def checkerboard(t,sz,n):
             
             square(t,sz/n)
             t.forward(sz/n) # 
-#         t.right(right_ang)
-#         t.forward(sz-(sz-(sz/5)))
-#         t.left(right_ang)
+
         t.penup()
         t.goto(x,(y-sz/n))
         y=y-sz/n
         t.pendown()
     t.goto(checkerboard_x,checkerboard_y)
    
-#     t.goto(square_x,t.ycor((square_y-(sz/n))))
-#     for i in range(n):
-#         square(t,sz/n)
-#         t.forward(sz/n)
-#     t.goto(
-#         for i in range(n):
-#             square(t,sz/n)
-#             t.forward(sz/n)
-#         
-        #for k in range(n):
-            
+
 
 tim.penup()
 tim.goto(origin_x,origin_y)
