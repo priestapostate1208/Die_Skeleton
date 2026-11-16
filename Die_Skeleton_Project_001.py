@@ -16,10 +16,8 @@ tim.speed(0)
 
 '''Creating a square with the turtle function, with a passed in variable  by the user. '''
 def square(t,side):
-    #tim.speed(0)
-    #print (t.xcor(),t.ycor())
     t.pendown()
-    '''Draw one square of side length side with turtle t'''
+    '''Draw one square of side length side with turtle t - then goes back to point of origin.'''
     for x in range(4):
         t.forward(side)
         t.right(right_ang)
@@ -38,6 +36,7 @@ def cubeTab(t,sz,L):
     t.left(trap_angle)
 
 def B_with_tabs(t,sz,L):
+    '''This creates the "B" box, with tabs on either side.'''
     t.left(right_ang)
     cubeTab(tim,sz,L)
     t.forward(sz)
@@ -49,6 +48,7 @@ def B_with_tabs(t,sz,L):
     #print(x,y)
     
 def C_A_C_with_tabs(t,sz,L):
+    '''This creates the "C" boxes, with an "A" box in between.'''
     t.fillcolor("yellow")
     t.begin_fill()
     t.end_fill()
@@ -69,17 +69,14 @@ def C_A_C_with_tabs(t,sz,L):
     cubeTab(tim,sz,L)
 
 def checkerboard(t,sz,n):
-    square_x=t.xcor()
-    square_y=t.ycor()
-    #print(t.xcor(),t.ycor())
-#    print(t.pos())
+    '''Checkerboard function, that colors in a 5x5 box set.'''
     x,y = t.pos()
+    '''The x and y coordinates will be oriented off of the box's point of origin.''' 
     checkerboard_x,checkerboard_y = t.pos()
-#     print(x,y)
-#     print(checkerboard_x,checkerboard_y)
+    '''These variables are to keep track of the checkerboard box's point of origin.'''
     for i in range(1,n+1):
         for j in range(1,n+1):
-            #print (i,j,type(i),type(j))#- this is shown to work.
+
             if (i+j)%2==0:
                 t.fillcolor("yellow")
                 
@@ -88,26 +85,20 @@ def checkerboard(t,sz,n):
             t.begin_fill()
             square(t,sz/n)
             t.end_fill()
-            #t.fillcolor("clear")
-
-            
-            square(t,sz/n)
-            t.forward(sz/n) # 
+            t.forward(sz/n) # This moves the turtle forward to draw another square. 
 
         t.penup()
         t.goto(x,(y-sz/n))
         y=y-sz/n
         t.pendown()
-    t.goto(checkerboard_x,checkerboard_y)
-   
-
+        t.fillcolor("black")
+    t.goto(checkerboard_x,checkerboard_y) #Go back to origin.
 
 tim.penup()
 tim.goto(origin_x,origin_y)
 tim.pendown()
 square(tim,sz)
-cubeTab(tim,sz,L)
-#This is the topmost square and trapezoid
+cubeTab(tim,sz,L) #This is the topmost square and trapezoid
 checkerboard(tim,sz,n)
 tim.penup()
 
