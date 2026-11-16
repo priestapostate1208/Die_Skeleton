@@ -1,6 +1,6 @@
 import turtle
 tim = turtle.Turtle()
-sz=90
+sz=150
 flip = 180
 right_ang = 90
 origin_x= -0
@@ -16,7 +16,8 @@ L=sz/5 # This makes the trapezoid line length scale, relative to the sz
 
 '''Creating a square with the turtle function, with a passed in variable  by the user. '''
 def square(t,side):
-    tim.speed(0)
+    #tim.speed(0)
+    t.pendown()
     '''Draw one square of side length side with turtle t'''
     for x in range(4):
         t.forward(side)
@@ -47,14 +48,28 @@ def B_with_tabs(t,sz,L):
     #print(x,y)
     
 def CAC_with_tabs(t,sz,L):
+    square(tim,sz)
     cubeTab(tim,sz,L)
-    t.forward(sz)
-    t.right(right_ang)
-    for i in range(3):
-        square(t,sz)
-        t.forward(sz)
-    t.right(right_ang)
+    tim.penup()
+    tim.forward(sz)
+    tim.right(right_ang)
+    tim.forward(sz)
+    tim.pendown()
+    square(tim,sz)
+    tim.penup()
+    tim.forward(2*sz)
+    tim.right(right_ang)
+    tim.pendown()
+    square(tim,sz)
     cubeTab(tim,sz,L)
+#     cubeTab(tim,sz,L)
+#     t.forward(sz)
+#     t.right(right_ang)
+#     for i in range(3):
+#         square(t,sz)
+#         t.forward(sz)
+#     t.right(right_ang)
+#     cubeTab(tim,sz,L)
 
 tim.penup()
 tim.goto(origin_x,origin_y)
@@ -74,16 +89,58 @@ y-=sz
 tim.penup()
 tim.goto(x,y)
 tim.left(flip)
+# square(tim,sz)
+# cubeTab(tim,sz,L)
+print(x,y)
 CAC_with_tabs(tim,sz,L)
-#tim.stamp()
-#print(x,y)
-x+=(sz)
-#print(x)
-y-=sz
 tim.penup()
-tim.goto(x,y)
+tim.right(right_ang)
+tim.forward(2*sz)
+# tim.forward(sz)
+tim.left(right_ang)
+tim.forward(2*sz)
 tim.left(right_ang)
 B_with_tabs(tim,sz,L)
-tim.penup()
-tim.goto(origin_x,origin_y)
-tim.left(right_ang)
+# tim.pendown()
+#B_with_tabs(tim,sz,L)
+
+# tim.penup()
+# tim.goto(x,y)
+# CAC_with_tabs(tim,sz,L)
+# #tim.stamp()
+# #print(x,y)
+# x+=(sz)
+# #print(x)
+# y-=sz
+# tim.penup()
+# tim.goto(x,y)
+# tim.left(right_ang)
+# B_with_tabs(tim,sz,L)
+# tim.penup()
+# tim.goto(origin_x,origin_y)
+# tim.left(right_ang)
+# turtle.done()
+
+
+
+# square(tim,sz)
+# cubeTab(tim,sz,L)
+# tim.penup()
+# tim.forward(sz)
+# tim.right(right_ang)
+# tim.forward(sz)
+# tim.pendown()
+# square(tim,sz)
+# tim.penup()
+# tim.forward(2*sz)
+# tim.right(right_ang)
+# tim.pendown()
+# square(tim,sz)
+# cubeTab(tim,sz,L)
+print(tim.pos())
+
+# print(tim.pos())
+# tim.forward(sz)
+# print(tim.pos())
+# tim.right(right_ang)
+# tim.forward(sz)
