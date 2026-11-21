@@ -1,76 +1,83 @@
 import turtle
 tim = turtle.Turtle()
-sz=100
-flip = 180
-right_ang = 90
+#sz=120
+side_length=120
 origin_x= -0
 origin_y= 200
-x=origin_x #this is to start off with testing, without altering the origin_x/y values
-y=origin_y #this is to start off with testing, without altering the origin_x/y values
-checkerboard_x=0 #this is for the checkerboard function. 
-checkerboard_y=0 #this is for the checkerboard function. 
-trap_angle=120
-L=sz/5 # This makes the trapezoid line length scale, relative to the sz
-n=5
-tim.speed(0)
+#x=origin_x #this is to start off with testing, without altering the origin_x/y values
+#y=origin_y #this is to start off with testing, without altering the origin_x/y values
+#L=sz/5 # This makes the trapezoid line length scale, relative to the sz
+trap_length=side_length/5
+checkerboard_rows_and_columns=5
+#tim.speed(0)
 
 '''Creating a square with the turtle function, with a passed in variable  by the user. '''
 def square(t,side):
     t.pendown()
     '''Draw one square of side length side with turtle t - then goes back to point of origin.'''
-    for x in range(4):
+    for i in range(4):
         t.forward(side)
-        t.right(right_ang)
+        t.right(90)
 
 def cubeTab(t,sz,L):
-    #tim.speed(0)
     '''This function creates a trapezoid of length sz, in height of L.'''
     t.pendown()
     t.forward(sz)
-    t.left(trap_angle)
+    t.left(120)
     t.forward(L)
     t.left(60)
     t.forward(sz-(2*(L/2)))
     t.left(60)
     t.forward(L)
-    t.left(trap_angle)
+    t.left(120)
 
+def B_square_decoration(t,sz):
+    for m in range(3):
+        for k in range(4):
+            square(t,sz/4)
+            t.forward(sz/4)
+        t.right(90)
+        
 def B_with_tabs(t,sz,L):
     '''This creates the "B" box, with tabs on either side.'''
-    t.left(right_ang)
-    cubeTab(tim,sz,L)
+    t.left(90)
+    cubeTab(t,sz,L)
     t.forward(sz)
-    t.right(right_ang)
+    t.right(90)
     square(t,sz)
     t.forward(sz)
-    t.right(right_ang)
-    cubeTab(tim,sz,L)
+    t.right(90)
+    cubeTab(t,sz,L)
+    #B_square_decoration(t,sz/4)
     #print(x,y)
+
+
     
 def C_A_C_with_tabs(t,sz,L):
     '''This creates the "C" boxes, with an "A" box in between.'''
     t.fillcolor("yellow")
     t.begin_fill()
     t.end_fill()
-    square(tim,sz)
-    cubeTab(tim,sz,L)
-    tim.penup()
-    tim.forward(sz)
-    tim.right(right_ang)
-    tim.forward(sz)
-    tim.pendown()
-    square(tim,sz)
-    checkerboard(tim,sz,n)
-    tim.penup()
-    tim.forward(2*sz)
-    tim.right(right_ang)
-    tim.pendown()
-    square(tim,sz)
-    cubeTab(tim,sz,L)
+    square(t,sz)
+    cubeTab(t,sz,L)
+    t.penup()
+    t.forward(sz)
+    t.right(90)
+    t.forward(sz)
+    t.pendown()
+    square(t,sz)
+    checkerboard(t,sz,checkerboard_rows_and_columns)
+    t.penup()
+    t.forward(2*sz)
+    t.right(90)
+    t.pendown()
+    square(t,sz)
+    cubeTab(t,sz,L)
 
 def checkerboard(t,sz,n):
     '''Checkerboard function, that colors in a 5x5 box set.'''
-    x,y = t.pos()
+    x, y = t.pos()
+#     print (type(t.pos))
     '''The x and y coordinates will be oriented off of the box's point of origin.''' 
     checkerboard_x,checkerboard_y = t.pos()
     '''These variables are to keep track of the checkerboard box's point of origin.'''
@@ -91,36 +98,42 @@ def checkerboard(t,sz,n):
         t.goto(x,(y-sz/n))
         y=y-sz/n
         t.pendown()
-        t.fillcolor("black")
+        t.fillcolor("")
     t.goto(checkerboard_x,checkerboard_y) #Go back to origin.
 
 tim.penup()
 tim.goto(origin_x,origin_y)
 tim.pendown()
-square(tim,sz)
-cubeTab(tim,sz,L) #This is the topmost square and trapezoid
-checkerboard(tim,sz,n)
+#square(tim,sz)
+square(tim,side_length)
+cubeTab(tim,side_length,trap_length) #This is the topmost square and trapezoid
+#cubeTab(tim,side_length,trap_length)
+checkerboard(tim,side_length,checkerboard_rows_and_columns)
 tim.penup()
 
 x=origin_x
-y=origin_y-(sz*2)
+#y=origin_y-(sz*2)
+y=origin_y
+y-=(side_length*2)
 tim.goto(x,y)
 
-B_with_tabs(tim,sz,L)
-x-=sz
-y-=sz
+B_with_tabs(tim,side_length,trap_length)
+x-=side_length
+y-=side_length
 tim.penup()
 tim.goto(x,y)
-tim.left(flip)
+tim.left(180)
 
-C_A_C_with_tabs(tim,sz,L)
+C_A_C_with_tabs(tim,side_length,trap_length)
 tim.penup()
-tim.right(right_ang)
-tim.forward(2*sz)
+tim.right(90)
+tim.forward(2*side_length)
 
-tim.left(right_ang)
-tim.forward(2*sz)
-tim.left(right_ang)
-B_with_tabs(tim,sz,L)
-
-
+tim.left(90)
+tim.forward(2*side_length)
+tim.left(90)
+B_with_tabs(tim,side_length,trap_length)
+# tim.penup()
+# tim.goto(origin_x,origin_y)
+# tim.left(90)
+tim.exitonclick()
