@@ -9,7 +9,7 @@ origin_y= 200
 #L=sz/5 # This makes the trapezoid line length scale, relative to the sz
 trap_length=side_length/5
 checkerboard_rows_and_columns=5
-#tim.speed(0)
+tim.speed(0)
 
 '''Creating a square with the turtle function, with a passed in variable  by the user. '''
 def square(t,side):
@@ -32,12 +32,18 @@ def cubeTab(t,sz,L):
     t.left(120)
 
 def B_square_decoration(t,sz):
-    for m in range(3):
-        for k in range(4):
+    for e in range(4):
+        for sq in range(4):
             square(t,sz/4)
             t.forward(sz/4)
         t.right(90)
-        
+    
+# for e in range(4):
+#     for sq in range(4):
+#         square(tim,side_length/4)
+#         tim.forward(side_length/4)
+#     tim.right(90) - this for loop works
+
 def B_with_tabs(t,sz,L):
     '''This creates the "B" box, with tabs on either side.'''
     t.left(90)
@@ -45,9 +51,14 @@ def B_with_tabs(t,sz,L):
     t.forward(sz)
     t.right(90)
     square(t,sz)
+    B_square_decoration(t,sz)
     t.forward(sz)
     t.right(90)
     cubeTab(t,sz,L)
+    
+#     t.left(90)
+#     t.backward(sz)
+    
     #B_square_decoration(t,sz/4)
     #print(x,y)
 
@@ -135,5 +146,21 @@ tim.left(90)
 B_with_tabs(tim,side_length,trap_length)
 # tim.penup()
 # tim.goto(origin_x,origin_y)
+tim.left(90)
+tim.backward(side_length)
+#print(tim.pos())
+#B_square_decoration(tim,side_length)
+#tim.penup()
 # tim.left(90)
-tim.exitonclick()
+# tim.forward(2*side_length)
+# tim.right(90)
+#B_square_decoration(tim,side_length/4)
+# for e in range(4):
+#     for sq in range(4):
+#         square(tim,side_length/4)
+#         tim.forward(side_length/4)
+#     tim.right(90) - this for loop works
+
+
+#tim.right(90)
+# tim.exitonclick()
