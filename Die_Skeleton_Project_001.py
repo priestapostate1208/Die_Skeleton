@@ -1,12 +1,9 @@
 import turtle
 tim = turtle.Turtle()
-#sz=120
-side_length=120
+#jane=turtle.Turtle()
+side_length=150
 origin_x= -0
 origin_y= 200
-#x=origin_x #this is to start off with testing, without altering the origin_x/y values
-#y=origin_y #this is to start off with testing, without altering the origin_x/y values
-#L=sz/5 # This makes the trapezoid line length scale, relative to the sz
 trap_length=side_length/5
 checkerboard_rows_and_columns=5
 tim.speed(0)
@@ -32,17 +29,53 @@ def cubeTab(t,sz,L):
     t.left(120)
 
 def B_square_decoration(t,sz):
-    for e in range(4):
-        for sq in range(4):
-            square(t,sz/4)
-            t.forward(sz/4)
-        t.right(90)
+    b_sq_x,b_sq_y=t.pos()
+    print(b_sq_x,b_sq_y)
+    for c in range(3):
+        for d in range(3):
+            for e in range(4):
+                for sq in range(4): #this the internal repeating square series
+                    square(t,sz/4)
+                    t.forward(sz/4)
+                t.right(90)
+            t.forward(sz)
+        #square(t,sz/4)
     
-# for e in range(4):
-#     for sq in range(4):
-#         square(tim,side_length/4)
-#         tim.forward(side_length/4)
-#     tim.right(90) - this for loop works
+        t.penup()
+        t.back(sz*3)
+        t.right(90)
+        t.forward(sz)
+        t.left(90)
+        t.pendown()
+    t.goto(b_sq_x,b_sq_y)
+
+
+
+
+#***************************************************
+#     for d in range(3):
+#             for e in range(4):
+#                 for sq in range(4): #this the internal repeating square series
+#                     square(t,sz/4)
+#                     t.forward(sz/4)
+#                 t.right(90)
+#             t.forward(sz)
+#***************************************************
+
+#    t.stamp()            
+#     for e in range(4): This works so far...
+#         for sq in range(4): #this the internal repeating square series
+#             square(t,sz/4)
+#             t.forward(sz/4)
+#         t.right(90)
+
+
+
+#     for e in range(4):
+#         for sq in range(4):
+#             square(t,sz/4)
+#             t.forward(sz/4)
+#         t.right(90) This code works - do NOT alter it.
 
 def B_with_tabs(t,sz,L):
     '''This creates the "B" box, with tabs on either side.'''
@@ -51,19 +84,11 @@ def B_with_tabs(t,sz,L):
     t.forward(sz)
     t.right(90)
     square(t,sz)
-    B_square_decoration(t,sz)
+    B_square_decoration(t,sz/3)
     t.forward(sz)
     t.right(90)
     cubeTab(t,sz,L)
-    
-#     t.left(90)
-#     t.backward(sz)
-    
-    #B_square_decoration(t,sz/4)
-    #print(x,y)
-
-
-    
+        
 def C_A_C_with_tabs(t,sz,L):
     '''This creates the "C" boxes, with an "A" box in between.'''
     t.fillcolor("yellow")
@@ -144,23 +169,5 @@ tim.left(90)
 tim.forward(2*side_length)
 tim.left(90)
 B_with_tabs(tim,side_length,trap_length)
-# tim.penup()
-# tim.goto(origin_x,origin_y)
 tim.left(90)
 tim.backward(side_length)
-#print(tim.pos())
-#B_square_decoration(tim,side_length)
-#tim.penup()
-# tim.left(90)
-# tim.forward(2*side_length)
-# tim.right(90)
-#B_square_decoration(tim,side_length/4)
-# for e in range(4):
-#     for sq in range(4):
-#         square(tim,side_length/4)
-#         tim.forward(side_length/4)
-#     tim.right(90) - this for loop works
-
-
-#tim.right(90)
-# tim.exitonclick()
