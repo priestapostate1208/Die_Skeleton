@@ -1,20 +1,21 @@
 import turtle
 tim = turtle.Turtle()
-#jane=turtle.Turtle()
 side_length=150
 origin_x= -0
-origin_y= 200
+origin_y= 500
 trap_length=side_length/5
 checkerboard_rows_and_columns=5
 tim.speed(0)
 
 '''Creating a square with the turtle function, with a passed in variable  by the user. '''
 def square(t,side):
+    original_heading=t.heading()
     t.pendown()
     '''Draw one square of side length side with turtle t - then goes back to point of origin.'''
     for i in range(4):
         t.forward(side)
         t.right(90)
+    t.setheading(original_heading)
 
 def cubeTab(t,sz,L):
     '''This function creates a trapezoid of length sz, in height of L.'''
@@ -30,7 +31,6 @@ def cubeTab(t,sz,L):
 
 def B_square_decoration(t,sz):
     b_sq_x,b_sq_y=t.pos()
-    print(b_sq_x,b_sq_y)
     for c in range(3):
         for d in range(3):
             for e in range(4):
@@ -39,7 +39,7 @@ def B_square_decoration(t,sz):
                     t.forward(sz/4)
                 t.right(90)
             t.forward(sz)
-        #square(t,sz/4)
+
     
         t.penup()
         t.back(sz*3)
@@ -47,7 +47,7 @@ def B_square_decoration(t,sz):
         t.forward(sz)
         t.left(90)
         t.pendown()
-    t.goto(b_sq_x,b_sq_y)
+    t.goto(b_sq_x,b_sq_y) #Go back to the square's origin coordinates after decoration.'''
 
 
 
@@ -171,3 +171,4 @@ tim.left(90)
 B_with_tabs(tim,side_length,trap_length)
 tim.left(90)
 tim.backward(side_length)
+turtle.done()
